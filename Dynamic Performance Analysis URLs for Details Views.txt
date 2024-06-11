@@ -1,0 +1,46 @@
+Interface
+-----
+
+PerfStack (Syslog, Events, Discards, CPU, Response Time) - Last 7 Days
+
+(legacy)
+/ui/perfstack/?context=0_Orion.NPM.Interfaces_${interfaceid}&withRelationships=true&presetTime=last7Days&charts=0_Orion.NPM.Interfaces_${interfaceid}-Orion.PerfStack.Status;0_Orion.Nodes_${nodeid}-Orion.ResponseTime.AvgResponseTime,0_Orion.Nodes_${nodeid}-Orion.CPUMultiLoad.AvgLoad;0_Orion.NPM.Interfaces_${interfaceid}-Orion.NPM.InterfaceTraffic.InPercentUtil,0_Orion.NPM.Interfaces_${interfaceid}-Orion.NPM.InterfaceTraffic.OutPercentUtil;0_Orion.NPM.Interfaces_${interfaceid}-Orion.NPM.InterfaceErrors.InDiscards,0_Orion.NPM.Interfaces_${interfaceid}-Orion.NPM.InterfaceErrors.OutDiscards;0_Orion.Nodes_${nodeid}-Orion.PerfStack.Changes.ConfigurationChanges;0_Orion.Nodes_${nodeid}-Orion.PerfStack.Syslog;0_Orion.NPM.Interfaces_${interfaceid}-Orion.PerfStack.Events;
+
+(new)
+/apps/perfstack/?context=0_Orion.NPM.Interfaces_${interfaceid}&withRelationships=true&presetTime=last7Days&charts=0_Orion.NPM.Interfaces_${interfaceid}-Orion.PerfStack.Status;0_Orion.Nodes_${nodeid}-Orion.ResponseTime.AvgResponseTime,0_Orion.Nodes_${nodeid}-Orion.CPUMultiLoad.AvgLoad;0_Orion.NPM.Interfaces_${interfaceid}-Orion.NPM.InterfaceTraffic.InPercentUtil,0_Orion.NPM.Interfaces_${interfaceid}-Orion.NPM.InterfaceTraffic.OutPercentUtil;0_Orion.NPM.Interfaces_${interfaceid}-Orion.NPM.InterfaceErrors.InDiscards,0_Orion.NPM.Interfaces_${interfaceid}-Orion.NPM.InterfaceErrors.OutDiscards;0_Orion.Nodes_${nodeid}-Orion.PerfStack.Changes.ConfigurationChanges;0_Orion.Nodes_${nodeid}-Orion.PerfStack.Syslog;0_Orion.NPM.Interfaces_${interfaceid}-Orion.PerfStack.Events;
+
+PerfStack (without Errors/Discards) - Last 30 Days
+
+(legacy)
+/ui/perfstack/?context=0_Orion.NPM.Interfaces_${interfaceid}&withRelationships=true&presetTime=last30Days&charts=0_Orion.NPM.Interfaces_${interfaceid}-Orion.PerfStack.Status;0_Orion.NPM.Interfaces_${interfaceid}-Orion.NPM.InterfaceTraffic.InPercentUtil,0_Orion.NPM.Interfaces_${interfaceid}-Orion.NPM.InterfaceTraffic.OutPercentUtil;0_Orion.NPM.Interfaces_${interfaceid}-Orion.NPM.InterfaceTraffic.InAveragebps,0_Orion.NPM.Interfaces_${interfaceid}-Orion.NPM.InterfaceTraffic.OutAveragebps;
+
+(new)
+/apps/perfstack/?context=0_Orion.NPM.Interfaces_${interfaceid}&withRelationships=true&presetTime=last30Days&charts=0_Orion.NPM.Interfaces_${interfaceid}-Orion.PerfStack.Status;0_Orion.NPM.Interfaces_${interfaceid}-Orion.NPM.InterfaceTraffic.InPercentUtil,0_Orion.NPM.Interfaces_${interfaceid}-Orion.NPM.InterfaceTraffic.OutPercentUtil;0_Orion.NPM.Interfaces_${interfaceid}-Orion.NPM.InterfaceTraffic.InAveragebps,0_Orion.NPM.Interfaces_${interfaceid}-Orion.NPM.InterfaceTraffic.OutAveragebps;
+
+PerfStack (default) - Last 7 Days
+
+(legacy)
+/ui/perfstack/?context=0_Orion.NPM.Interfaces_${interfaceid}&withRelationships=true&presetTime=last7Days&charts=0_Orion.NPM.Interfaces_${interfaceid}-Orion.PerfStack.Status;0_Orion.NPM.Interfaces_${interfaceid}-Orion.NPM.InterfaceTraffic.InPercentUtil,0_Orion.NPM.Interfaces_${interfaceid}-Orion.NPM.InterfaceTraffic.OutPercentUtil;0_Orion.NPM.Interfaces_${interfaceid}-Orion.NPM.InterfaceTraffic.InAveragebps,0_Orion.NPM.Interfaces_${interfaceid}-Orion.NPM.InterfaceTraffic.OutAveragebps;0_Orion.NPM.Interfaces_${interfaceid}-Orion.NPM.InterfaceErrors.InDiscards,0_Orion.NPM.Interfaces_${interfaceid}-Orion.NPM.InterfaceErrors.InErrors;0_Orion.NPM.Interfaces_${interfaceid}-Orion.NPM.InterfaceErrors.OutDiscards,0_Orion.NPM.Interfaces_${interfaceid}-Orion.NPM.InterfaceErrors.OutErrors;
+
+(new)
+/apps/perfstack/?context=0_Orion.NPM.Interfaces_${interfaceid}&withRelationships=true&presetTime=last7Days&charts=0_Orion.NPM.Interfaces_${interfaceid}-Orion.PerfStack.Status;0_Orion.NPM.Interfaces_${interfaceid}-Orion.NPM.InterfaceTraffic.InPercentUtil,0_Orion.NPM.Interfaces_${interfaceid}-Orion.NPM.InterfaceTraffic.OutPercentUtil;0_Orion.NPM.Interfaces_${interfaceid}-Orion.NPM.InterfaceTraffic.InAveragebps,0_Orion.NPM.Interfaces_${interfaceid}-Orion.NPM.InterfaceTraffic.OutAveragebps;0_Orion.NPM.Interfaces_${interfaceid}-Orion.NPM.InterfaceErrors.InDiscards,0_Orion.NPM.Interfaces_${interfaceid}-Orion.NPM.InterfaceErrors.InErrors;0_Orion.NPM.Interfaces_${interfaceid}-Orion.NPM.InterfaceErrors.OutDiscards,0_Orion.NPM.Interfaces_${interfaceid}-Orion.NPM.InterfaceErrors.OutErrors;
+
+
+Node
+-----
+
+PerfStack (default) - Last 7 Days
+
+(legacy)
+/ui/perfstack/?context=0_Orion.Nodes_${nodeid}&withRelationships=true&presetTime=last7Days&charts=0_Orion.Nodes_${nodeid}-Orion.CPULoad.AvgLoad,0_Orion.Nodes_${nodeid}-Orion.CPULoad.AvgPercentMemoryUsed;0_Orion.Nodes_${nodeid}-Orion.ResponseTime.AvgResponseTime;0_Orion.Nodes_${nodeid}-Orion.PerfStack.Alerts;0_Orion.Nodes_${nodeid}-Orion.PerfStack.Events;0_Orion.Nodes_${nodeid}-Orion.PerfStack.Status;
+
+(new)
+/apps/perfstack/?context=0_Orion.Nodes_${nodeid}&withRelationships=true&presetTime=last7Days&charts=0_Orion.Nodes_${nodeid}-Orion.CPULoad.AvgLoad,0_Orion.Nodes_${nodeid}-Orion.CPULoad.AvgPercentMemoryUsed;0_Orion.Nodes_${nodeid}-Orion.ResponseTime.AvgResponseTime;0_Orion.Nodes_${nodeid}-Orion.PerfStack.Alerts;0_Orion.Nodes_${nodeid}-Orion.PerfStack.Events;0_Orion.Nodes_${nodeid}-Orion.PerfStack.Status;
+
+PerfStack (Syslog, Config Changes, Response Time, Alerts) - Last 7 Days
+
+(legacy)
+/ui/perfstack/?context=0_Orion.Nodes_${nodeid}&withRelationships=true&presetTime=last7Days&charts=0_Orion.Nodes_${nodeid}-Orion.ResponseTime.AvgResponseTime;0_Orion.Nodes_${nodeid}-Orion.PerfStack.Alerts;0_Orion.Nodes_${nodeid}-Orion.PerfStack.Changes.ConfigurationChanges;0_Orion.Nodes_${nodeid}-Orion.PerfStack.Status;0_Orion.Nodes_${nodeid}-Orion.PerfStack.Syslog;
+
+(new)
+/apps/perfstack/?context=0_Orion.Nodes_${nodeid}&withRelationships=true&presetTime=last7Days&charts=0_Orion.Nodes_${nodeid}-Orion.ResponseTime.AvgResponseTime;0_Orion.Nodes_${nodeid}-Orion.PerfStack.Alerts;0_Orion.Nodes_${nodeid}-Orion.PerfStack.Changes.ConfigurationChanges;0_Orion.Nodes_${nodeid}-Orion.PerfStack.Status;0_Orion.Nodes_${nodeid}-Orion.PerfStack.Syslog;

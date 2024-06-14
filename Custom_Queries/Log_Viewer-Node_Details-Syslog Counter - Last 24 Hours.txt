@@ -1,0 +1,56 @@
+SELECT Count(*) AS [Total]
+
+,(SELECT Count(*) AS [Emergency]
+FROM Orion.OLM.LogEntry le
+JOIN Orion.OLM.LogEntryType let ON le.LogEntryTypeID = let.LogEntryTypeID
+WHERE NodeID = ${NodeID} and let.Name = 'Syslog' AND Level = 'Emergency' AND DATETIME >= ADDHOUR(-24, GETUTCDATE())) AS [Emergency]
+,'/Orion/images/ActiveAlerts/Critical.png' AS [_iconfor_Emergency]
+
+,(SELECT Count(*) AS [Alert]
+FROM Orion.OLM.LogEntry le
+JOIN Orion.OLM.LogEntryType let ON le.LogEntryTypeID = let.LogEntryTypeID
+WHERE NodeID = ${NodeID} and let.Name = 'Syslog' AND Level = 'Alert' AND DATETIME >= ADDHOUR(-24, GETUTCDATE())) AS [Alert]
+,'/Orion/images/ActiveAlerts/Critical.png' AS [_iconfor_Alert]
+
+,(SELECT Count(*) AS [Critical]
+FROM Orion.OLM.LogEntry le
+JOIN Orion.OLM.LogEntryType let ON le.LogEntryTypeID = let.LogEntryTypeID
+WHERE NodeID = ${NodeID} and let.Name = 'Syslog' AND Level = 'Critical' AND DATETIME >= ADDHOUR(-24, GETUTCDATE())) AS [Critical]
+,'/Orion/images/ActiveAlerts/Critical.png' AS [_iconfor_Critical]
+
+,(SELECT Count(*) AS [Error]
+FROM Orion.OLM.LogEntry le
+JOIN Orion.OLM.LogEntryType let ON le.LogEntryTypeID = let.LogEntryTypeID
+WHERE NodeID = ${NodeID} and let.Name = 'Syslog' AND Level = 'Error' AND DATETIME >= ADDHOUR(-24, GETUTCDATE())) AS [Error]
+,'/Orion/images/ActiveAlerts/Serious.png' AS [_iconfor_Error]
+
+,(SELECT Count(*) AS [Warning]
+FROM Orion.OLM.LogEntry le
+JOIN Orion.OLM.LogEntryType let ON le.LogEntryTypeID = let.LogEntryTypeID
+WHERE NodeID = ${NodeID} and let.Name = 'Syslog' AND Level = 'Warning' AND DATETIME >= ADDHOUR(-24, GETUTCDATE())) AS [Warning]
+,'/Orion/images/ActiveAlerts/Warning.png' AS [_iconfor_Warning]
+
+,(SELECT Count(*) AS [Notice]
+FROM Orion.OLM.LogEntry le
+JOIN Orion.OLM.LogEntryType let ON le.LogEntryTypeID = let.LogEntryTypeID
+WHERE NodeID = ${NodeID} and let.Name = 'Syslog' AND Level = 'Notice' AND DATETIME >= ADDHOUR(-24, GETUTCDATE())) AS [Notice]
+,'/Orion/images/ActiveAlerts/Notice.png' AS [_iconfor_Notice]
+
+,(SELECT Count(*) AS [Informational]
+FROM Orion.OLM.LogEntry le
+JOIN Orion.OLM.LogEntryType let ON le.LogEntryTypeID = let.LogEntryTypeID
+WHERE NodeID = ${NodeID} and let.Name = 'Syslog' AND Level = 'Informational' AND DATETIME >= ADDHOUR(-24, GETUTCDATE())) AS [Informational]
+,'/Orion/images/ActiveAlerts/InformationalAlert.png' AS [_iconfor_Informational]
+
+,(SELECT Count(*) AS [Debug]
+FROM Orion.OLM.LogEntry le
+JOIN Orion.OLM.LogEntryType let ON le.LogEntryTypeID = let.LogEntryTypeID
+WHERE NodeID = ${NodeID} and let.Name = 'Syslog' AND Level = 'Debug' AND DATETIME >= ADDHOUR(-24, GETUTCDATE())) AS [Debug]
+,'/Orion/images/ActiveAlerts/InformationalAlert.png' AS [_iconfor_Debug]
+
+
+FROM Orion.OLM.LogEntry le
+JOIN Orion.OLM.LogEntryType let ON le.LogEntryTypeID = let.LogEntryTypeID
+WHERE NodeID = ${NodeID} and let.Name = 'Syslog'
+
+AND DATETIME >= ADDHOUR(-24, GETUTCDATE())

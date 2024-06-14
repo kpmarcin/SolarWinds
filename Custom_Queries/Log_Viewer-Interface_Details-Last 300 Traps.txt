@@ -1,0 +1,16 @@
+SELECT TOP 300
+
+TOLOCAL(DateTime) AS [Log Time]
+,SUBSTRING(Message,1,700) AS Message
+
+FROM Orion.OLM.LogEntry le
+ 
+JOIN Orion.OLM.LogEntryType let ON le.LogEntryTypeID = let.LogEntryTypeID
+ 
+WHERE NodeID = ${NodeID} and let.Name = 'Traps'
+
+AND Message like '%ifIndex.${interfaceindex} %'
+ 
+ --AND le.Message LIKE '%${SEARCH_STRING}%'
+ 
+ORDER BY DATETIME DESC

@@ -1,0 +1,38 @@
+SELECT TOP 300
+
+Level AS [Severity]
+,TOLOCAL(DateTime) AS [Log Time]
+,SUBSTRING(Message,1,700) AS Message
+
+,CASE
+    WHEN Level = 'Emergency' THEN '/Orion/images/ActiveAlerts/Critical.png'
+    WHEN Level = 'Alert' THEN '/Orion/images/ActiveAlerts/Critical.png'
+    WHEN Level = 'Critical' THEN '/Orion/images/ActiveAlerts/Critical.png'
+    WHEN Level = 'Error' THEN '/Orion/images/ActiveAlerts/Serious.png'
+    WHEN Level = 'Warning' THEN '/Orion/images/ActiveAlerts/Warning.png'
+    WHEN Level = 'Notice' THEN '/Orion/images/ActiveAlerts/Notice.png'
+    WHEN Level = 'Informational' THEN '/Orion/images/ActiveAlerts/InformationalAlert.png'
+    WHEN Level = 'Debug' THEN '/Orion/images/ActiveAlerts/InformationalAlert.png'
+END AS [_iconfor_Severity]
+
+FROM Orion.OLM.LogEntry le
+
+JOIN Orion.OLM.LogEntryType let ON le.LogEntryTypeID = let.LogEntryTypeID
+
+WHERE NodeID = ${NodeID} and let.Name = 'Syslog'
+--AND le.Message LIKE '%${SEARCH_STRING}%'
+AND (
+    le.Message LIKE '%${interfacename},%'
+    OR le.Message LIKE '%${interfacename}.%'
+    OR le.Message LIKE '%${interfacename}.'
+    OR le.Message LIKE '%${interfacename}'
+    OR le.Message LIKE '%${interfacename} '
+    OR le.Message LIKE '%${ifname},%'
+    OR le.Message LIKE '%${ifname}.%'
+    OR le.Message LIKE '%${ifname}.'
+    OR le.Message LIKE '%${ifname}'
+    OR le.Message LIKE '%${ifname} '
+)
+
+
+ORDER BY DATETIME DESC

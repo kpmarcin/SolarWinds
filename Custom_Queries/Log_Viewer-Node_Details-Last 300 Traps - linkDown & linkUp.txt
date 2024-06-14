@@ -1,0 +1,35 @@
+SELECT TOP 300
+ 
+ISNULL(i.Caption,'not monitored') as Interface
+,i.detailsurl as [_linkFor_Interface]
+,CASE 
+    WHEN i.StatusIcon IS NULL THEN '/Orion/images/StatusIcons/Small-Unknown.gif'
+    ELSE ('/Orion/images/StatusIcons/Small-' + i.StatusIcon)
+END AS [_IconFor_Interface]
+
+,TOLOCAL(le.DateTime) AS [Log Time]
+,SUBSTRING(le.Message,1,700) AS Message -- Edit the last number for how many characters of the message you want to see
+
+FROM Orion.OLM.LogEntry le
+ 
+JOIN Orion.OLM.LogEntryType let ON le.LogEntryTypeID = let.LogEntryTypeID
+
+LEFT JOIN Orion.NPM.Interfaces i ON i.NodeID = le.NodeID AND i.InterfaceIndex = 
+
+(
+REPLACE((
+    SUBSTRING(
+        (SUBSTRING(le.Message,CHARINDEX('ifIndex.',le.Message),999))
+        ,0
+        ,CHARINDEX(' ',((SUBSTRING(le.Message,CHARINDEX('ifIndex.',le.Message),999))))
+    )
+),'ifIndex.','')
+
+)
+
+WHERE le.NodeID = ${NodeID} and let.Name = 'Traps'
+--AND (le.Message LIKE '%${SEARCH_STRING}%' OR i.Caption LIKE '%${SEARCH_STRING}%')
+
+AND (le.Message like '%linkDown%' OR le.Message like '%linkUp%')
+
+ORDER BY le.DATETIME DESC

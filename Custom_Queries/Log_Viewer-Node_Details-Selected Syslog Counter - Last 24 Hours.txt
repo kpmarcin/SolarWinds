@@ -1,0 +1,27 @@
+SELECT Count(*) AS [Flapping]
+
+,'/Orion/images/ActiveAlerts/Critical.png' AS [_iconfor_Flapping]
+
+,(SELECT Count(*) AS [Configured from console]
+FROM Orion.OLM.LogEntry le
+JOIN Orion.OLM.LogEntryType let ON le.LogEntryTypeID = let.LogEntryTypeID
+WHERE NodeID = ${NodeID} and let.Name = 'Syslog' AND Message like '%Configured from console%' AND DATETIME >= ADDHOUR(-24, GETUTCDATE())) AS [Configured from console]
+,'/Orion/images/ActiveAlerts/Warning.png' AS [_iconfor_Configured from console]
+
+,(SELECT Count(*) AS [Login Success]
+FROM Orion.OLM.LogEntry le
+JOIN Orion.OLM.LogEntryType let ON le.LogEntryTypeID = let.LogEntryTypeID
+WHERE NodeID = ${NodeID} and let.Name = 'Syslog' AND Message like '%Login Success%' AND DATETIME >= ADDHOUR(-24, GETUTCDATE())) AS [Login Success]
+,'/Orion/images/ActiveAlerts/Notice.png' AS [_iconfor_Login Success]
+
+,(SELECT Count(*) AS [Login failed]
+FROM Orion.OLM.LogEntry le
+JOIN Orion.OLM.LogEntryType let ON le.LogEntryTypeID = let.LogEntryTypeID
+WHERE NodeID = ${NodeID} and let.Name = 'Syslog' AND (Message like '%Login failed%' OR Message like '%LOGIN_FAILED%') AND DATETIME >= ADDHOUR(-24, GETUTCDATE())) AS [Login Failed]
+,'/Orion/images/ActiveAlerts/Warning.png' AS [_iconfor_Login Failed]
+
+FROM Orion.OLM.LogEntry le
+JOIN Orion.OLM.LogEntryType let ON le.LogEntryTypeID = let.LogEntryTypeID
+WHERE NodeID = ${NodeID} and let.Name = 'Syslog' AND Message like '%flapping%'
+
+AND DATETIME >= ADDHOUR(-24, GETUTCDATE())

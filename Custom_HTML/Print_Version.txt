@@ -1,0 +1,16 @@
+<script>
+
+var currenturl = window.location.search;
+
+function buildCurrentURL(item)
+{
+	item.href=currenturl+"&PRINTABLE=TRUE";
+    return true;
+}
+
+
+</script>
+</head>
+<body>
+
+<h1><a onclick="return buildCurrentURL(this)" href="">Print version</a></h1>

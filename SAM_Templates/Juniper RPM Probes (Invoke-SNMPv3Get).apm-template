@@ -1,0 +1,839 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfApplicationTemplate xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.solarwinds.com/2007/08/APM">
+	<ApplicationTemplate>
+		<Settings xmlns:s="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+			<s:KeyValueOfstringSettingValueyR_SGpLPx>
+				<s:Key>__DebugLoggingEnabled</s:Key>
+				<s:Value>
+					<Required>true</Required>
+					<SettingLevel>Template</SettingLevel>
+					<Value>False</Value>
+					<ValueType>Boolean</ValueType>
+					<Key i:nil="true" />
+				</s:Value>
+			</s:KeyValueOfstringSettingValueyR_SGpLPx>
+			<s:KeyValueOfstringSettingValueyR_SGpLPx>
+				<s:Key>__NumberOfLogFilesToKeep</s:Key>
+				<s:Value>
+					<Required>true</Required>
+					<SettingLevel>Template</SettingLevel>
+					<Value>30</Value>
+					<ValueType>Integer</ValueType>
+					<Key i:nil="true" />
+				</s:Value>
+			</s:KeyValueOfstringSettingValueyR_SGpLPx>
+			<s:KeyValueOfstringSettingValueyR_SGpLPx>
+				<s:Key>__Timeout</s:Key>
+				<s:Value>
+					<Required>true</Required>
+					<SettingLevel>Template</SettingLevel>
+					<Value>300</Value>
+					<ValueType>Integer</ValueType>
+					<Key i:nil="true" />
+				</s:Value>
+			</s:KeyValueOfstringSettingValueyR_SGpLPx>
+			<s:KeyValueOfstringSettingValueyR_SGpLPx>
+				<s:Key>__Use64Bit</s:Key>
+				<s:Value>
+					<Required>true</Required>
+					<SettingLevel>Template</SettingLevel>
+					<Value>False</Value>
+					<ValueType>Boolean</ValueType>
+					<Key i:nil="true" />
+				</s:Value>
+			</s:KeyValueOfstringSettingValueyR_SGpLPx>
+		</Settings>
+		<ComponentTemplates>
+			<ComponentTemplate>
+				<ComponentOrder>1</ComponentOrder>
+				<Id>4502</Id>
+				<Name>Owner "owner" | Name "ICMPprobe"</Name>
+				<Settings xmlns:s="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+					<s:KeyValueOfstringSettingValueyR_SGpLPx>
+						<s:Key>__Disabled</s:Key>
+						<s:Value>
+							<Required>false</Required>
+							<SettingLevel>Template</SettingLevel>
+							<Value>False</Value>
+							<ValueType>Boolean</ValueType>
+							<Key>__Disabled</Key>
+						</s:Value>
+					</s:KeyValueOfstringSettingValueyR_SGpLPx>
+					<s:KeyValueOfstringSettingValueyR_SGpLPx>
+						<s:Key>__CredentialSetId</s:Key>
+						<s:Value>
+							<Required>false</Required>
+							<SettingLevel>Template</SettingLevel>
+							<Value>0</Value>
+							<ValueType>String</ValueType>
+							<Key>__CredentialSetId</Key>
+						</s:Value>
+					</s:KeyValueOfstringSettingValueyR_SGpLPx>
+					<s:KeyValueOfstringSettingValueyR_SGpLPx>
+						<s:Key>__UserDescription</s:Key>
+						<s:Value>
+							<Required>false</Required>
+							<SettingLevel>Template</SettingLevel>
+							<Value></Value>
+							<ValueType>String</ValueType>
+							<Key>__UserDescription</Key>
+						</s:Value>
+					</s:KeyValueOfstringSettingValueyR_SGpLPx>
+					<s:KeyValueOfstringSettingValueyR_SGpLPx>
+						<s:Key>__UserNotes</s:Key>
+						<s:Value>
+							<Required>false</Required>
+							<SettingLevel>Template</SettingLevel>
+							<Value></Value>
+							<ValueType>String</ValueType>
+							<Key>__UserNotes</Key>
+						</s:Value>
+					</s:KeyValueOfstringSettingValueyR_SGpLPx>
+					<s:KeyValueOfstringSettingValueyR_SGpLPx>
+						<s:Key>CountAsDifference</s:Key>
+						<s:Value>
+							<Required>false</Required>
+							<SettingLevel>Template</SettingLevel>
+							<Value>false</Value>
+							<ValueType>Boolean</ValueType>
+							<Key>CountAsDifference</Key>
+						</s:Value>
+					</s:KeyValueOfstringSettingValueyR_SGpLPx>
+					<s:KeyValueOfstringSettingValueyR_SGpLPx>
+						<s:Key>ExecutionMode</s:Key>
+						<s:Value>
+							<Required>false</Required>
+							<SettingLevel>Template</SettingLevel>
+							<Value>LocalHost</Value>
+							<ValueType>Option</ValueType>
+							<Key>ExecutionMode</Key>
+						</s:Value>
+					</s:KeyValueOfstringSettingValueyR_SGpLPx>
+					<s:KeyValueOfstringSettingValueyR_SGpLPx>
+						<s:Key>ImpersonateForLocalMode</s:Key>
+						<s:Value>
+							<Required>false</Required>
+							<SettingLevel>Template</SettingLevel>
+							<Value>false</Value>
+							<ValueType>Boolean</ValueType>
+							<Key>ImpersonateForLocalMode</Key>
+						</s:Value>
+					</s:KeyValueOfstringSettingValueyR_SGpLPx>
+					<s:KeyValueOfstringSettingValueyR_SGpLPx>
+						<s:Key>ScriptArguments</s:Key>
+						<s:Value>
+							<Required>false</Required>
+							<SettingLevel>Template</SettingLevel>
+							<Value>${IP},MD5,AES128,owner,ICMPprobe</Value>
+							<ValueType>String</ValueType>
+							<Key>ScriptArguments</Key>
+						</s:Value>
+					</s:KeyValueOfstringSettingValueyR_SGpLPx>
+					<s:KeyValueOfstringSettingValueyR_SGpLPx>
+						<s:Key>ScriptBody</s:Key>
+						<s:Value>
+							<Required>true</Required>
+							<SettingLevel>Template</SettingLevel>
+							<Value># Gathering all parameters
+
+param(
+[string]$node,
+[string]$AuthType,
+[string]$PrivType,
+[string]$owner,
+[string]$name
+)
+
+Function SecureStringToString($value)
+{
+    [System.IntPtr] $bstr = [System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($value);
+    try
+    {
+        [System.Runtime.InteropServices.Marshal]::PtrToStringBSTR($bstr);
+    }
+    finally
+    {
+        [System.Runtime.InteropServices.Marshal]::FreeBSTR($bstr);
+    }
+}
+
+# Clearing up
+$ownerBytes = $null
+$nameBytes = $null
+$get_averageSNMP = $null
+$get_jitterSNMP = $null
+$get_percent_lostSNMP = $null
+$get_receivedSNMP = $null
+$get_sentSNMP = $null
+$get_averageOID = $null
+$get_jitterOID = $null
+$get_percent_lostOID = $null
+$get_sentOID = $null
+$get_receivedOID = $null
+
+# Encoding for SNMP Tables for Juniper RPM
+$enc = [system.Text.Encoding]::UTF8
+
+# For debugging purpose (if you want to ignore script parameters)
+
+# $node = '${IP}'
+# $owner = 'test'
+# $name = 'test'
+
+# $AuthType = 'MD5'
+# $PrivType = 'AES128'
+
+# Gettin credentials from SAM Credential Library
+$c = Get-Credential -credential ${CREDENTIAL}
+[string] $userName = $c.Username
+[string] $userPassword = SecureStringToString $c.Password
+
+# SAM Application allows only for one credentials to be assigned
+# So, if you have a different password for Auth and Priv, then it could be a problem and you might need to include additional encrypted XML
+$AuthSecret = SecureStringToString $c.Password
+$PrivSecret = SecureStringToString $c.Password
+
+# Table OIDs for Juniper RPM
+$jnxRpmResCalcAverage = '.1.3.6.1.4.1.2636.3.50.1.3.1.5'
+$jnxRpmResCalcPkToPk = '.1.3.6.1.4.1.2636.3.50.1.3.1.6'
+$jnxRpmResSumSent = '1.3.6.1.4.1.2636.3.50.1.2.1.2'
+$jnxRpmResSumReceived = '1.3.6.1.4.1.2636.3.50.1.2.1.3'
+$jnxRpmResSumPercentLost = '.1.3.6.1.4.1.2636.3.50.1.2.1.4'
+
+# Converting probe name into numbers
+$nameLenght = $name.Length
+$nameBytes = $nameLenght.ToString()
+$nameBytesArray = $enc.GetBytes($name) 
+
+# Converting probe owner into numbers and generating the first part of the OID
+if($owner -ne $null) {
+
+
+    $ownerLenght = $owner.Length
+    $ownerBytes = $ownerLenght.ToString()
+    $ownerBytesArray = $enc.GetBytes($owner) 
+
+    for($i = 0;$i -lt $ownerBytesArray.Count; $i++){
+        $ownerBytes = $ownerBytes + '.' + $ownerBytesArray[$i].ToString()
+    }
+
+    $get_averageOID = $jnxRpmResCalcAverage + '.' + $nameBytes + '.2.1'
+    $get_jitterOID = $jnxRpmResCalcPkToPk + '.' + $nameBytes + '.2.1'
+    $get_percent_lostOID = $jnxRpmResSumPercentLost + '.' + $nameBytes + '.2'
+    $get_sentOID = $jnxRpmResSumSent + '.' + $nameBytes + '.2'
+    $get_receivedOID = $jnxRpmResSumReceived + '.' + $nameBytes + '.2'
+
+}
+
+# Generating second part of the OID
+for($i = 0;$i -lt $nameBytesArray.Count; $i++){
+    $nameBytes = $nameBytes + '.' + $nameBytesArray[$i].ToString()
+}
+
+# Preparing final OID for SNMP GET
+$get_averageOID = $jnxRpmResCalcAverage + '.' + $ownerBytes + '.' + $nameBytes + '.2.1'
+$get_jitterOID = $jnxRpmResCalcPkToPk + '.' + $ownerBytes + '.' + $nameBytes + '.2.1'
+$get_percent_lostOID = $jnxRpmResSumPercentLost + '.' + $ownerBytes + '.' + $nameBytes + '.2'
+$get_sentOID = $jnxRpmResSumSent + '.' + $ownerBytes + '.' + $nameBytes + '.2'
+$get_receivedOID = $jnxRpmResSumReceived + '.' + $ownerBytes + '.' + $nameBytes + '.2'
+
+# Additional parameter for the timeout
+$SNMPtimeout = '6000'
+
+# Executing snmpget command
+$get_averageSNMP = Invoke-SNMPv3Get -UserName $UserName -AuthType $AuthType -AuthSecret $AuthSecret -PrivType $PrivType -PrivSecret $PrivSecret -Target $node -OID $get_averageOID  -Timeout $SNMPtimeout
+$get_jitterSNMP = Invoke-SNMPv3Get -UserName $UserName -AuthType $AuthType -AuthSecret $AuthSecret -PrivType $PrivType -PrivSecret $PrivSecret -Target $node -OID $get_jitterOID  -Timeout $SNMPtimeout
+$get_percent_lostSNMP = Invoke-SNMPv3Get -UserName $UserName -AuthType $AuthType -AuthSecret $AuthSecret -PrivType $PrivType -PrivSecret $PrivSecret -Target $node -OID $get_percent_lostOID -Timeout $SNMPtimeout
+$get_sentSNMP = Invoke-SNMPv3Get -UserName $UserName -AuthType $AuthType -AuthSecret $AuthSecret -PrivType $PrivType -PrivSecret $PrivSecret -Target $node -OID $get_sentOID -Timeout $SNMPtimeout
+$get_receivedSNMP = Invoke-SNMPv3Get -UserName $UserName -AuthType $AuthType -AuthSecret $AuthSecret -PrivType $PrivType -PrivSecret $PrivSecret -Target $node -OID $get_receivedOID -Timeout $SNMPtimeout
+
+
+# If something went wrong, we will try to do a second attempt
+if($get_averageSNMP -eq $null) {
+
+    Start-Sleep -s 15
+
+    $get_averageSNMP = Invoke-SNMPv3Get -UserName $UserName -AuthType $AuthType -AuthSecret $AuthSecret -PrivType $PrivType -PrivSecret $PrivSecret -Target $node -OID $get_averageOID  -Timeout $SNMPtimeout
+    $get_jitterSNMP = Invoke-SNMPv3Get -UserName $UserName -AuthType $AuthType -AuthSecret $AuthSecret -PrivType $PrivType -PrivSecret $PrivSecret -Target $node -OID $get_jitterOID  -Timeout $SNMPtimeout
+    $get_percent_lostSNMP = Invoke-SNMPv3Get -UserName $UserName -AuthType $AuthType -AuthSecret $AuthSecret -PrivType $PrivType -PrivSecret $PrivSecret -Target $node -OID $get_percent_lostOID -Timeout $SNMPtimeout
+    $get_sentSNMP = Invoke-SNMPv3Get -UserName $UserName -AuthType $AuthType -AuthSecret $AuthSecret -PrivType $PrivType -PrivSecret $PrivSecret -Target $node -OID $get_sentOID -Timeout $SNMPtimeout
+    $get_receivedSNMP = Invoke-SNMPv3Get -UserName $UserName -AuthType $AuthType -AuthSecret $AuthSecret -PrivType $PrivType -PrivSecret $PrivSecret -Target $node -OID $get_receivedOID -Timeout $SNMPtimeout
+
+}
+
+# If the result is still wrong, script will exit with the error message
+if($get_averageSNMP -eq $null) {
+
+    Write-Host 'Statistic.Average: 0'
+    Write-Host 'Message.Average: Device did not respond.'
+    Write-Host '------------'
+    Write-Host 'Statistic.Jitter: 0'
+    Write-Host 'Message.Jitter: Device did not respond.'
+    Write-Host '------------'
+    Write-Host 'Statistic.PercentLoss: 0'
+    Write-Host 'Message.PercentLoss: Device did not respond.'
+    Write-Host '------------'
+    Write-Host 'Statistic.Received: 0'
+    Write-Host 'Message.Received: Device did not respond.'
+    Write-Host '------------'
+    Write-Host 'Statistic.Sent: 0'
+    Write-Host 'Message.Sent: Device did not respond.'
+
+    exit 4; # Unknown
+
+}
+
+&lt;#
+# Sometimes I noticed that SNMP result would show NoSuchInstance instead of actual statistics, however the probe does exist
+# This "if" is looking for those and will do another attempt, if found
+if($get_averageSNMP -like '*No Such Instance*' -or $get_averageSNMP -like '*NoSuchInstance*') {
+
+    Start-Sleep -s 15
+
+    $get_averageSNMP = Invoke-SNMPv3Get -UserName $UserName -AuthType $AuthType -AuthSecret $AuthSecret -PrivType $PrivType -PrivSecret $PrivSecret -Target $node -OID $get_averageOID  -Timeout $SNMPtimeout
+    $get_jitterSNMP = Invoke-SNMPv3Get -UserName $UserName -AuthType $AuthType -AuthSecret $AuthSecret -PrivType $PrivType -PrivSecret $PrivSecret -Target $node -OID $get_jitterOID  -Timeout $SNMPtimeout
+    $get_percent_lostSNMP = Invoke-SNMPv3Get -UserName $UserName -AuthType $AuthType -AuthSecret $AuthSecret -PrivType $PrivType -PrivSecret $PrivSecret -Target $node -OID $get_percent_lostOID -Timeout $SNMPtimeout
+    $get_sentSNMP = Invoke-SNMPv3Get -UserName $UserName -AuthType $AuthType -AuthSecret $AuthSecret -PrivType $PrivType -PrivSecret $PrivSecret -Target $node -OID $get_sentOID -Timeout $SNMPtimeout
+    $get_receivedSNMP = Invoke-SNMPv3Get -UserName $UserName -AuthType $AuthType -AuthSecret $AuthSecret -PrivType $PrivType -PrivSecret $PrivSecret -Target $node -OID $get_receivedOID -Timeout $SNMPtimeout
+
+}
+#&gt;
+
+# In case there is no value available (for example the probe does not exist)
+if($get_averageSNMP -like '*No Such Instance*' -or $get_averageSNMP -like '*NoSuchInstance*') {
+
+    Write-Host 'Statistic.Average: 0'
+    Write-Host 'Message.Average: RPM Probe was not found.'
+    Write-Host '------------'
+    Write-Host 'Statistic.Jitter: 0'
+    Write-Host 'Message.Jitter: RPM Probe was not found.'
+    Write-Host '------------'
+    Write-Host 'Statistic.PercentLoss: 0'
+    Write-Host 'Message.PercentLoss: RPM Probe was not found.'
+    Write-Host '------------'
+    Write-Host 'Statistic.Received: 0'
+    Write-Host 'Message.Received: RPM Probe was not found.'
+    Write-Host '------------'
+    Write-Host 'Statistic.Sent: 0'
+    Write-Host 'Message.Sent: RPM Probe was not found.'
+
+    exit 4; # Unknown
+
+}
+
+# Modifying the results from CMD output to integer
+$get_averageSNMP = $get_averageSNMP -replace "Gauge32: " , ''
+$get_jitterSNMP = $get_jitterSNMP -replace "Gauge32: " , ''
+$get_percent_lostSNMP = $get_percent_lostSNMP -replace "Gauge32: " , ''
+$get_sentSNMP = $get_sentSNMP -replace "Gauge32: " , ''
+$get_receivedSNMP = $get_receivedSNMP -replace "Gauge32: " , ''
+
+# Doing additional conversion due to the way how PowerShell is handling snmpget output
+$get_averageSNMP = -split $get_averageSNMP
+$get_averageSNMP_result =  $get_averageSNMP[3].replace('Value=','')
+$get_averageSNMP_result =  $get_averageSNMP_result.replace('}','')
+$get_averageSNMP_result = [int]$get_averageSNMP_result
+
+$get_jitterSNMP = -split $get_jitterSNMP
+$get_jitterSNMPP_result =  $get_jitterSNMP[3].replace('Value=','')
+$get_jitterSNMPP_result =  $get_jitterSNMPP_result.replace('}','')
+$get_jitterSNMPP_result = [int]$get_jitterSNMPP_result
+
+
+$get_percent_lostSNMP = -split $get_percent_lostSNMP
+$get_percent_lostSNMP_result =  $get_percent_lostSNMP[3].replace('Value=','')
+$get_percent_lostSNMP_result =  $get_percent_lostSNMP_result.replace('}','')
+$get_percent_lostSNMP_result = [int]$get_percent_lostSNMP_result
+
+$get_receivedSNMP = -split $get_receivedSNMP
+$get_receivedSNMP_result =  $get_receivedSNMP[3].replace('Value=','')
+$get_receivedSNMP_result =  $get_receivedSNMP_result.replace('}','')
+$get_receivedSNMP_result = [int]$get_receivedSNMP_result
+
+
+$get_sentSNMP = -split $get_sentSNMP
+$get_sentSNMP_result =  $get_sentSNMP[3].replace('Value=','')
+$get_sentSNMP_result =  $get_sentSNMP_result.replace('}','')
+$get_sentSNMP_result = [int]$get_sentSNMP_result
+
+# Support for new Juniper firmware
+if ($get_percent_lostSNMP_result -ge 100000) {$get_percent_lostSNMP_result = $get_percent_lostSNMP_result / 1000000}
+
+# Adding values instead of null, in case of 100% packet loss
+if ($get_percent_lostSNMP_result -eq 100) {$get_averageSNMP_result = 0; $get_jitterSNMPP_result = 0; }
+
+# Rounding up the numbers
+else {
+    $get_averageSNMP_result = $get_averageSNMP_result / 1000
+    $get_averageSNMP_result = [math]::Round($get_averageSNMP_result)
+    $get_jitterSNMPP_result = $get_jitterSNMPP_result / 1000
+    $get_jitterSNMPP_result = [math]::Round($get_jitterSNMPP_result)
+
+}
+
+
+# In case there is something wrong (such as null result) let's exit with Unknown status
+if($get_averageSNMP_result -notmatch "^\d+$" -or $get_averageSNMP_result -eq $null -or $get_averageSNMP_result.Length -eq 0)
+{
+    Write-Host 'Statistic.Average: 0'
+    Write-Host 'Message.Average: Something went wrong. Error:' $error[0]
+    Write-Host '------------'
+    Write-Host 'Statistic.Jitter: 0'
+    Write-Host 'Message.Jitter: Something went wrong. Error:' $error[0]
+    Write-Host '------------'
+    Write-Host 'Statistic.PercentLoss: 0'
+    Write-Host 'Message.PercentLoss: Something went wrong. Error:' $error[0]
+    Write-Host '------------'
+    Write-Host 'Statistic.Received: 0'
+    Write-Host 'Message.Received: Something went wrong. Error:' $error[0]
+    Write-Host '------------'
+    Write-Host 'Statistic.Sent: 0'
+    Write-Host 'Message.Sent: Something went wrong. Error:' $error[0]
+
+    exit 4; # Unknown
+}
+
+
+# Output
+Write-Host 'Statistic.Average:' $get_averageSNMP_result
+Write-Host 'Message.Average: The average (in ms) of all the samples in the collection and the measurement set associated with the entry.'
+Write-Host '------------'
+Write-Host 'Statistic.Jitter:' $get_jitterSNMPP_result
+Write-Host 'Message.Jitter: The difference (in ms) between the minimum and maximum of all the samples in the collection and the measurement set associated with the entry.'
+Write-Host '------------'
+Write-Host 'Statistic.PercentLoss:' $get_percent_lostSNMP_result
+Write-Host 'Message.PercentLoss: The percentage of probes that are lost within the collection.'
+Write-Host '------------'
+Write-Host 'Statistic.Received:' $get_receivedSNMP_result
+Write-Host 'Message.Received: The number of probes received within the collection.'
+Write-Host '------------'
+Write-Host 'Statistic.Sent:' $get_sentSNMP_result
+Write-Host 'Message.Sent: The number of probes sent within the collection.'
+</Value>
+							<ValueType>External</ValueType>
+							<Key>ScriptBody</Key>
+						</s:Value>
+					</s:KeyValueOfstringSettingValueyR_SGpLPx>
+					<s:KeyValueOfstringSettingValueyR_SGpLPx>
+						<s:Key>StatusRollupType</s:Key>
+						<s:Value>
+							<Required>true</Required>
+							<SettingLevel>Template</SettingLevel>
+							<Value>Worst</Value>
+							<ValueType>Option</ValueType>
+							<Key>StatusRollupType</Key>
+						</s:Value>
+					</s:KeyValueOfstringSettingValueyR_SGpLPx>
+					<s:KeyValueOfstringSettingValueyR_SGpLPx>
+						<s:Key>WrmPort</s:Key>
+						<s:Value>
+							<Required>true</Required>
+							<SettingLevel>Template</SettingLevel>
+							<Value>5985</Value>
+							<ValueType>Integer</ValueType>
+							<Key>WrmPort</Key>
+						</s:Value>
+					</s:KeyValueOfstringSettingValueyR_SGpLPx>
+					<s:KeyValueOfstringSettingValueyR_SGpLPx>
+						<s:Key>WrmUrlPrefix</s:Key>
+						<s:Value>
+							<Required>true</Required>
+							<SettingLevel>Template</SettingLevel>
+							<Value>wsman</Value>
+							<ValueType>String</ValueType>
+							<Key>WrmUrlPrefix</Key>
+						</s:Value>
+					</s:KeyValueOfstringSettingValueyR_SGpLPx>
+					<s:KeyValueOfstringSettingValueyR_SGpLPx>
+						<s:Key>WrmUseSSL</s:Key>
+						<s:Value>
+							<Required>false</Required>
+							<SettingLevel>Template</SettingLevel>
+							<Value>false</Value>
+							<ValueType>Boolean</ValueType>
+							<Key>WrmUseSSL</Key>
+						</s:Value>
+					</s:KeyValueOfstringSettingValueyR_SGpLPx>
+				</Settings>
+				<Type>PowerShell</Type>
+				<Thresholds />
+				<EvidenceType>None</EvidenceType>
+				<CategoryDisplayName></CategoryDisplayName>
+				<ComponentCategoryId i:nil="true" />
+				<DynamicColumnSettings>
+					<DynamicEvidenceColumnSchema>
+						<Cells />
+						<ComponentID>-1</ComponentID>
+						<ComponentTemplateID>4502</ComponentTemplateID>
+						<DataTransform />
+						<DataTransformOverridden>false</DataTransformOverridden>
+						<Disabled>false</Disabled>
+						<ID>2122</ID>
+						<Label>PercentLoss</Label>
+						<LabelOverridden>false</LabelOverridden>
+						<Name>PercentLoss</Name>
+						<ParentID>-1</ParentID>
+						<Threshold>
+							<AreHigherValuesBetter>false</AreHigherValuesBetter>
+							<BaselineApplyError></BaselineApplyError>
+							<ComputeBaseline>true</ComputeBaseline>
+							<CriticalFormula></CriticalFormula>
+							<CriticalLevel>1.7976931348623157E+308</CriticalLevel>
+							<CriticalPolls>1</CriticalPolls>
+							<CriticalPollsInterval>1</CriticalPollsInterval>
+							<IsForParentComponent>false</IsForParentComponent>
+							<IsForTemplate>false</IsForTemplate>
+							<MaxValue>100</MaxValue>
+							<Name></Name>
+							<WarnLevel>1.7976931348623157E+308</WarnLevel>
+							<WarningFormula></WarningFormula>
+							<WarningPolls>1</WarningPolls>
+							<WarningPollsInterval>1</WarningPollsInterval>
+							<ThresholdOperator>Greater</ThresholdOperator>
+						</Threshold>
+						<ThresholdOverridden>false</ThresholdOverridden>
+						<Type>String</Type>
+					</DynamicEvidenceColumnSchema>
+					<DynamicEvidenceColumnSchema>
+						<Cells />
+						<ComponentID>-1</ComponentID>
+						<ComponentTemplateID>4502</ComponentTemplateID>
+						<DataTransform>
+							<CommonFormulaOptions>0</CommonFormulaOptions>
+							<TransformExpression></TransformExpression>
+						</DataTransform>
+						<DataTransformOverridden>false</DataTransformOverridden>
+						<Disabled>false</Disabled>
+						<ID>2123</ID>
+						<Label>PercentLoss</Label>
+						<LabelOverridden>false</LabelOverridden>
+						<Name>PercentLoss</Name>
+						<ParentID>-1</ParentID>
+						<Threshold>
+							<AreHigherValuesBetter>false</AreHigherValuesBetter>
+							<BaselineApplyError></BaselineApplyError>
+							<ComputeBaseline>true</ComputeBaseline>
+							<CriticalFormula></CriticalFormula>
+							<CriticalLevel>100</CriticalLevel>
+							<CriticalPolls>1</CriticalPolls>
+							<CriticalPollsInterval>1</CriticalPollsInterval>
+							<IsForParentComponent>false</IsForParentComponent>
+							<IsForTemplate>false</IsForTemplate>
+							<MaxValue>100</MaxValue>
+							<Name></Name>
+							<WarnLevel>1</WarnLevel>
+							<WarningFormula></WarningFormula>
+							<WarningPolls>1</WarningPolls>
+							<WarningPollsInterval>1</WarningPollsInterval>
+							<ThresholdOperator>GreaterOrEqual</ThresholdOperator>
+						</Threshold>
+						<ThresholdOverridden>false</ThresholdOverridden>
+						<Type>Numeric</Type>
+					</DynamicEvidenceColumnSchema>
+					<DynamicEvidenceColumnSchema>
+						<Cells />
+						<ComponentID>-1</ComponentID>
+						<ComponentTemplateID>4502</ComponentTemplateID>
+						<DataTransform />
+						<DataTransformOverridden>false</DataTransformOverridden>
+						<Disabled>false</Disabled>
+						<ID>2124</ID>
+						<Label>Received</Label>
+						<LabelOverridden>false</LabelOverridden>
+						<Name>Received</Name>
+						<ParentID>-1</ParentID>
+						<Threshold>
+							<AreHigherValuesBetter>false</AreHigherValuesBetter>
+							<BaselineApplyError></BaselineApplyError>
+							<ComputeBaseline>true</ComputeBaseline>
+							<CriticalFormula></CriticalFormula>
+							<CriticalLevel>1.7976931348623157E+308</CriticalLevel>
+							<CriticalPolls>1</CriticalPolls>
+							<CriticalPollsInterval>1</CriticalPollsInterval>
+							<IsForParentComponent>false</IsForParentComponent>
+							<IsForTemplate>false</IsForTemplate>
+							<MaxValue>100</MaxValue>
+							<Name></Name>
+							<WarnLevel>1.7976931348623157E+308</WarnLevel>
+							<WarningFormula></WarningFormula>
+							<WarningPolls>1</WarningPolls>
+							<WarningPollsInterval>1</WarningPollsInterval>
+							<ThresholdOperator>Greater</ThresholdOperator>
+						</Threshold>
+						<ThresholdOverridden>false</ThresholdOverridden>
+						<Type>String</Type>
+					</DynamicEvidenceColumnSchema>
+					<DynamicEvidenceColumnSchema>
+						<Cells />
+						<ComponentID>-1</ComponentID>
+						<ComponentTemplateID>4502</ComponentTemplateID>
+						<DataTransform>
+							<CommonFormulaOptions>0</CommonFormulaOptions>
+							<TransformExpression></TransformExpression>
+						</DataTransform>
+						<DataTransformOverridden>false</DataTransformOverridden>
+						<Disabled>false</Disabled>
+						<ID>2125</ID>
+						<Label>Received</Label>
+						<LabelOverridden>false</LabelOverridden>
+						<Name>Received</Name>
+						<ParentID>-1</ParentID>
+						<Threshold>
+							<AreHigherValuesBetter>false</AreHigherValuesBetter>
+							<BaselineApplyError></BaselineApplyError>
+							<ComputeBaseline>true</ComputeBaseline>
+							<CriticalFormula></CriticalFormula>
+							<CriticalLevel>1.7976931348623157E+308</CriticalLevel>
+							<CriticalPolls>1</CriticalPolls>
+							<CriticalPollsInterval>1</CriticalPollsInterval>
+							<IsForParentComponent>false</IsForParentComponent>
+							<IsForTemplate>false</IsForTemplate>
+							<MaxValue>100</MaxValue>
+							<Name></Name>
+							<WarnLevel>1.7976931348623157E+308</WarnLevel>
+							<WarningFormula></WarningFormula>
+							<WarningPolls>1</WarningPolls>
+							<WarningPollsInterval>1</WarningPollsInterval>
+							<ThresholdOperator>Greater</ThresholdOperator>
+						</Threshold>
+						<ThresholdOverridden>false</ThresholdOverridden>
+						<Type>Numeric</Type>
+					</DynamicEvidenceColumnSchema>
+					<DynamicEvidenceColumnSchema>
+						<Cells />
+						<ComponentID>-1</ComponentID>
+						<ComponentTemplateID>4502</ComponentTemplateID>
+						<DataTransform />
+						<DataTransformOverridden>false</DataTransformOverridden>
+						<Disabled>false</Disabled>
+						<ID>2126</ID>
+						<Label>Sent</Label>
+						<LabelOverridden>false</LabelOverridden>
+						<Name>Sent</Name>
+						<ParentID>-1</ParentID>
+						<Threshold>
+							<AreHigherValuesBetter>false</AreHigherValuesBetter>
+							<BaselineApplyError></BaselineApplyError>
+							<ComputeBaseline>true</ComputeBaseline>
+							<CriticalFormula></CriticalFormula>
+							<CriticalLevel>1.7976931348623157E+308</CriticalLevel>
+							<CriticalPolls>1</CriticalPolls>
+							<CriticalPollsInterval>1</CriticalPollsInterval>
+							<IsForParentComponent>false</IsForParentComponent>
+							<IsForTemplate>false</IsForTemplate>
+							<MaxValue>100</MaxValue>
+							<Name></Name>
+							<WarnLevel>1.7976931348623157E+308</WarnLevel>
+							<WarningFormula></WarningFormula>
+							<WarningPolls>1</WarningPolls>
+							<WarningPollsInterval>1</WarningPollsInterval>
+							<ThresholdOperator>Greater</ThresholdOperator>
+						</Threshold>
+						<ThresholdOverridden>false</ThresholdOverridden>
+						<Type>String</Type>
+					</DynamicEvidenceColumnSchema>
+					<DynamicEvidenceColumnSchema>
+						<Cells />
+						<ComponentID>-1</ComponentID>
+						<ComponentTemplateID>4502</ComponentTemplateID>
+						<DataTransform>
+							<CommonFormulaOptions>0</CommonFormulaOptions>
+							<TransformExpression></TransformExpression>
+						</DataTransform>
+						<DataTransformOverridden>false</DataTransformOverridden>
+						<Disabled>false</Disabled>
+						<ID>2127</ID>
+						<Label>Sent</Label>
+						<LabelOverridden>false</LabelOverridden>
+						<Name>Sent</Name>
+						<ParentID>-1</ParentID>
+						<Threshold>
+							<AreHigherValuesBetter>false</AreHigherValuesBetter>
+							<BaselineApplyError></BaselineApplyError>
+							<ComputeBaseline>true</ComputeBaseline>
+							<CriticalFormula></CriticalFormula>
+							<CriticalLevel>1.7976931348623157E+308</CriticalLevel>
+							<CriticalPolls>1</CriticalPolls>
+							<CriticalPollsInterval>1</CriticalPollsInterval>
+							<IsForParentComponent>false</IsForParentComponent>
+							<IsForTemplate>false</IsForTemplate>
+							<MaxValue>100</MaxValue>
+							<Name></Name>
+							<WarnLevel>1.7976931348623157E+308</WarnLevel>
+							<WarningFormula></WarningFormula>
+							<WarningPolls>1</WarningPolls>
+							<WarningPollsInterval>1</WarningPollsInterval>
+							<ThresholdOperator>Greater</ThresholdOperator>
+						</Threshold>
+						<ThresholdOverridden>false</ThresholdOverridden>
+						<Type>Numeric</Type>
+					</DynamicEvidenceColumnSchema>
+					<DynamicEvidenceColumnSchema>
+						<Cells />
+						<ComponentID>-1</ComponentID>
+						<ComponentTemplateID>4502</ComponentTemplateID>
+						<DataTransform />
+						<DataTransformOverridden>false</DataTransformOverridden>
+						<Disabled>false</Disabled>
+						<ID>2128</ID>
+						<Label>Average</Label>
+						<LabelOverridden>false</LabelOverridden>
+						<Name>Average</Name>
+						<ParentID>-1</ParentID>
+						<Threshold>
+							<AreHigherValuesBetter>false</AreHigherValuesBetter>
+							<BaselineApplyError></BaselineApplyError>
+							<ComputeBaseline>true</ComputeBaseline>
+							<CriticalFormula></CriticalFormula>
+							<CriticalLevel>1.7976931348623157E+308</CriticalLevel>
+							<CriticalPolls>1</CriticalPolls>
+							<CriticalPollsInterval>1</CriticalPollsInterval>
+							<IsForParentComponent>false</IsForParentComponent>
+							<IsForTemplate>false</IsForTemplate>
+							<MaxValue>100</MaxValue>
+							<Name></Name>
+							<WarnLevel>1.7976931348623157E+308</WarnLevel>
+							<WarningFormula></WarningFormula>
+							<WarningPolls>1</WarningPolls>
+							<WarningPollsInterval>1</WarningPollsInterval>
+							<ThresholdOperator>Greater</ThresholdOperator>
+						</Threshold>
+						<ThresholdOverridden>false</ThresholdOverridden>
+						<Type>String</Type>
+					</DynamicEvidenceColumnSchema>
+					<DynamicEvidenceColumnSchema>
+						<Cells />
+						<ComponentID>-1</ComponentID>
+						<ComponentTemplateID>4502</ComponentTemplateID>
+						<DataTransform>
+							<CommonFormulaOptions>0</CommonFormulaOptions>
+							<TransformExpression></TransformExpression>
+						</DataTransform>
+						<DataTransformOverridden>false</DataTransformOverridden>
+						<Disabled>false</Disabled>
+						<ID>2129</ID>
+						<Label>Average</Label>
+						<LabelOverridden>false</LabelOverridden>
+						<Name>Average</Name>
+						<ParentID>-1</ParentID>
+						<Threshold>
+							<AreHigherValuesBetter>false</AreHigherValuesBetter>
+							<BaselineApplyError></BaselineApplyError>
+							<ComputeBaseline>true</ComputeBaseline>
+							<CriticalFormula></CriticalFormula>
+							<CriticalLevel>1.7976931348623157E+308</CriticalLevel>
+							<CriticalPolls>1</CriticalPolls>
+							<CriticalPollsInterval>1</CriticalPollsInterval>
+							<IsForParentComponent>false</IsForParentComponent>
+							<IsForTemplate>false</IsForTemplate>
+							<MaxValue>100</MaxValue>
+							<Name></Name>
+							<WarnLevel>150</WarnLevel>
+							<WarningFormula></WarningFormula>
+							<WarningPolls>1</WarningPolls>
+							<WarningPollsInterval>1</WarningPollsInterval>
+							<ThresholdOperator>Greater</ThresholdOperator>
+						</Threshold>
+						<ThresholdOverridden>false</ThresholdOverridden>
+						<Type>Numeric</Type>
+					</DynamicEvidenceColumnSchema>
+					<DynamicEvidenceColumnSchema>
+						<Cells />
+						<ComponentID>-1</ComponentID>
+						<ComponentTemplateID>4502</ComponentTemplateID>
+						<DataTransform />
+						<DataTransformOverridden>false</DataTransformOverridden>
+						<Disabled>false</Disabled>
+						<ID>2130</ID>
+						<Label>Jitter</Label>
+						<LabelOverridden>false</LabelOverridden>
+						<Name>Jitter</Name>
+						<ParentID>-1</ParentID>
+						<Threshold>
+							<AreHigherValuesBetter>false</AreHigherValuesBetter>
+							<BaselineApplyError></BaselineApplyError>
+							<ComputeBaseline>true</ComputeBaseline>
+							<CriticalFormula></CriticalFormula>
+							<CriticalLevel>1.7976931348623157E+308</CriticalLevel>
+							<CriticalPolls>1</CriticalPolls>
+							<CriticalPollsInterval>1</CriticalPollsInterval>
+							<IsForParentComponent>false</IsForParentComponent>
+							<IsForTemplate>false</IsForTemplate>
+							<MaxValue>100</MaxValue>
+							<Name></Name>
+							<WarnLevel>1.7976931348623157E+308</WarnLevel>
+							<WarningFormula></WarningFormula>
+							<WarningPolls>1</WarningPolls>
+							<WarningPollsInterval>1</WarningPollsInterval>
+							<ThresholdOperator>Greater</ThresholdOperator>
+						</Threshold>
+						<ThresholdOverridden>false</ThresholdOverridden>
+						<Type>String</Type>
+					</DynamicEvidenceColumnSchema>
+					<DynamicEvidenceColumnSchema>
+						<Cells />
+						<ComponentID>-1</ComponentID>
+						<ComponentTemplateID>4502</ComponentTemplateID>
+						<DataTransform>
+							<CommonFormulaOptions>0</CommonFormulaOptions>
+							<TransformExpression></TransformExpression>
+						</DataTransform>
+						<DataTransformOverridden>false</DataTransformOverridden>
+						<Disabled>false</Disabled>
+						<ID>2131</ID>
+						<Label>Jitter</Label>
+						<LabelOverridden>false</LabelOverridden>
+						<Name>Jitter</Name>
+						<ParentID>-1</ParentID>
+						<Threshold>
+							<AreHigherValuesBetter>false</AreHigherValuesBetter>
+							<BaselineApplyError></BaselineApplyError>
+							<ComputeBaseline>true</ComputeBaseline>
+							<CriticalFormula></CriticalFormula>
+							<CriticalLevel>1.7976931348623157E+308</CriticalLevel>
+							<CriticalPolls>1</CriticalPolls>
+							<CriticalPollsInterval>1</CriticalPollsInterval>
+							<IsForParentComponent>false</IsForParentComponent>
+							<IsForTemplate>false</IsForTemplate>
+							<MaxValue>100</MaxValue>
+							<Name></Name>
+							<WarnLevel>1.7976931348623157E+308</WarnLevel>
+							<WarningFormula></WarningFormula>
+							<WarningPolls>1</WarningPolls>
+							<WarningPollsInterval>1</WarningPollsInterval>
+							<ThresholdOperator>Greater</ThresholdOperator>
+						</Threshold>
+						<ThresholdOverridden>false</ThresholdOverridden>
+						<Type>Numeric</Type>
+					</DynamicEvidenceColumnSchema>
+				</DynamicColumnSettings>
+				<VisibilityMode>Visible</VisibilityMode>
+				<ShortName></ShortName>
+				<ApplicationItemType></ApplicationItemType>
+				<ApplicationTemplateId>261</ApplicationTemplateId>
+				<UniqueId>e024a903-d23e-4136-a05b-9820bf46fd0f</UniqueId>
+				<ComponentCategoryName i:nil="true" />
+				<IsApplicationItemSpecific>false</IsApplicationItemSpecific>
+			</ComponentTemplate>
+		</ComponentTemplates>
+		<DeletedComponentTemplates />
+		<Id>261</Id>
+		<Name>Juniper RPM Probes (Invoke-SNMPv3Get)</Name>
+		<IsMockTemplate>false</IsMockTemplate>
+		<Description></Description>
+		<Tags />
+		<Created>2024-06-16T14:37:29.103Z</Created>
+		<LastModified>2024-08-06T11:41:55.003Z</LastModified>
+		<CustomApplicationType i:nil="true" />
+		<Version>1.0</Version>
+		<ViewID>0</ViewID>
+		<ViewXml i:nil="true" />
+		<ModuleVersion xmlns:d="http://schemas.datacontract.org/2004/07/System">
+			<d:_Build>0</d:_Build>
+			<d:_Major>2023</d:_Major>
+			<d:_Minor>2</d:_Minor>
+			<d:_Revision>0</d:_Revision>
+		</ModuleVersion>
+		<UniqueId>6138f4e2-fd95-4882-85c8-d5b63cf696b3</UniqueId>
+	</ApplicationTemplate>
+</ArrayOfApplicationTemplate>
